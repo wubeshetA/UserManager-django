@@ -22,7 +22,20 @@ class UserSerializer(serializers.ModelSerializer):
         # Include 'id' field when data is being prepared for rendering
             rep = super(UserSerializer, self).to_representation(instance)
             rep['id'] = instance.id
+            # Remove 'password' field when data is being prepared for rendering
+            rep.pop('password', None)
+
+       
             return rep
 
     def validate_password(self, value):
         return make_password(value)
+    
+    def update(self, instance, validated_data):
+        # Make password field optional for PUT request
+        password = validated_data.pop('password', None)
+        
+        if password is not None:
+            instance.set_password(password)
+        
+        return super(UserSerializer, self).update(instance, validated_data)
