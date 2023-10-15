@@ -8,3 +8,8 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+class RequestLog(models.Model):
+    method = models.CharField(max_length=10)
+    path = models.TextField(blank=True)
+    source = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)

@@ -59,19 +59,33 @@ INSTALLED_APPS = [
 ]
 
 STATIC_URL = "static/"
+# CORS_ALLOWED_HEADERS = [
+#     # "some-other-headers",
+#     'Content-Type',
+#     "Client-Id",
+#     "client-id"
+# ]
 
 MIDDLEWARE = [
+    
     'corsheaders.middleware.CorsMiddleware',
+   
+   
+    'django.middleware.common.CommonMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'user.capture_request_middleware.CaptureRequestMiddleware',
+    
+    
     
 ]
+
+
 
 ROOT_URLCONF = 'userManager.urls'
 
@@ -149,5 +163,5 @@ AUTH_USER_MODEL = 'user.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = (
-#   'http://localhost:8000',
+#   'http://127.0.0.1:5173',
 # )

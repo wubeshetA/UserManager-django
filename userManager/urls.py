@@ -27,12 +27,14 @@ from user import views
 User = get_user_model()
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'logs', views.RequestLogViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 
 
 urlpatterns = [
+    
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),

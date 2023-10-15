@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from django.contrib.auth.hashers import make_password 
+from django.contrib.auth.hashers import make_password
+
+from .models import RequestLog 
 
 User = get_user_model()
 
@@ -17,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
         if request and (request.method in ['POST', 'PUT']):
             # Remove only 'id' field for POST and PUT requests
             self.fields.pop('id', None)
+        
             
     def to_representation(self, instance):
         # Include 'id' field when data is being prepared for rendering
@@ -24,7 +27,6 @@ class UserSerializer(serializers.ModelSerializer):
             rep['id'] = instance.id
             # Remove 'password' field when data is being prepared for rendering
             rep.pop('password', None)
-
        
             return rep
 
@@ -32,6 +34,7 @@ class UserSerializer(serializers.ModelSerializer):
         return make_password(value)
     
     def update(self, instance, validated_data):
+        
         # Make password field optional for PUT request
         password = validated_data.pop('password', None)
         
@@ -39,3 +42,8 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         
         return super(UserSerializer, self).update(instance, validated_data)
+    
+class RequestLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequestLog
+        fields = ['method', 'path', 'created_at', 'source']
