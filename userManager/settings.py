@@ -46,13 +46,15 @@ REST_FRAMEWORK = {
 
 INSTALLED_APPS = [
        
+    # "daphne",
+    # "channels",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',     
+    'corsheaders',    
     'rest_framework',
     'debug_toolbar',
     'user',
@@ -106,6 +108,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'userManager.wsgi.application'
+# ASGI_APPLICATION = 'userManager.asgi.application'
 
 
 # Database
@@ -165,3 +168,4 @@ CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = (
 #   'http://127.0.0.1:5173',
 # )
+

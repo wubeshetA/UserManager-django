@@ -1,15 +1,14 @@
 from django.shortcuts import render
+from django.contrib.auth import get_user_model
 
-from .models import RequestLog
-from .serializers import RequestLogSerializer, UserSerializer
 from rest_framework import viewsets
 from rest_framework import permissions
-from django.contrib.auth import get_user_model
-# Create your views here.
-# ViewSets define the view behavior.
+from .models import RequestLog
+from .serializers import RequestLogSerializer, UserSerializer
+from .consumers import UserConsumer  # Import the UserConsumer
+
 User = get_user_model()
 class UserViewSet(viewsets.ModelViewSet):
-    
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
