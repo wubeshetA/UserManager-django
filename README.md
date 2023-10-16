@@ -3,30 +3,50 @@
 This is a simple REST API build with Django and Django Rest Framework to do the CRUD operations on the USER model.
 
 ## Requirements
- - Python 3.11 or higher
+
+- Python 3.11 or higher
 
 ## Installation and Setup
+
 To set up this Django backend project locally, follow these steps:
 
 1. Clone the repository
-    ```sh
-    git clone https://github.com/wubeshetA/UserManager-django.git
-    ```
+
+   ```sh
+   git clone https://github.com/wubeshetA/UserManager-django.git
+   ```
 
 2. Change into the project directory
-    ```sh
-    cd UserManager-django
-    ```
+   ```sh
+   cd UserManager-django
+   ```
 3. Install pipenv dependecy management tool with the following command. This project
-uses pipenv to create isolated virtual environement and manage third party packages.
-    ```sh
+   uses pipenv to create isolated virtual environement and manage third party packages.
+   `sh
     pip install pipenv
-    ```
+    `
 4. Activate the virtual environment:
-    ```sh
-    pipenv shell
-    ```
+   ```sh
+   pipenv shell
+   ```
 5. Install the required dependencies (This depencendencies are listed in the Pipfile):
-    ```sh
-    pipenv install
-    ```
+   ```sh
+   pipenv install
+   ```
+6. Run the migrations:
+   ```sh
+   python manage.py migrate
+   ```
+7. Run the server:
+   ```sh
+   python manage.py runserver
+   ```
+8. You can now access the user API on http://127.0.0.1:8000/api/users/
+
+## Deployment
+
+This project is deployed on Digital Ocean. You can access the API on the following URL:
+
+```sh
+
+```
