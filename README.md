@@ -43,10 +43,3 @@ To set up this Django backend project locally, follow these steps:
    ```
 8. You can now access the user API on http://127.0.0.1:8000/api/users/
 
-## Deployment
-
-This project is deployed on Digital Ocean. You can access the API on the following URL:
-
-```sh
-
-```
