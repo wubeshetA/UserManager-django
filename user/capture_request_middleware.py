@@ -18,7 +18,10 @@ class CaptureRequestMiddleware:
         print("path: ", request.path)
         
         # print("data: ", request.body.decode('utf-8') if request.body else "No body")
-        if (origin == 'http://127.0.0.1:5173' or origin == 'http://127.0.0.1:5173/') and request.path != '/api/logs/':  
+        if (origin == 'http://127.0.0.1:5173'\
+            or origin == 'http://127.0.0.1:5173/'\
+                or origin == 'https://rainbow-sports-vd49c.ondigitalocean.app')\
+                    and request.path != '/api/logs/':  
             # Log request or perform desired action
             
             obj = RequestLog.objects.create(
