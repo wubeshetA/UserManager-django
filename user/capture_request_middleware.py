@@ -20,7 +20,8 @@ class CaptureRequestMiddleware:
         # print("data: ", request.body.decode('utf-8') if request.body else "No body")
         if (origin == 'http://127.0.0.1:5173'\
             or origin == 'http://127.0.0.1:5173/'\
-                or origin == 'https://rainbow-sports-vd49c.ondigitalocean.app')\
+                or origin == 'https://rainbow-sports.vercel.app'\
+                    or origin == 'https://rainbow-sports.vercel.app/')\
                     and request.path != '/api/logs/':  
             # Log request or perform desired action
             
